@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:snapkart_project/auth/model/auth_model.dart';
 import 'package:snapkart_project/auth/provider/auth_provider.dart';
-import 'package:snapkart_project/auth/screen/home_screen.dart';
+import 'package:snapkart_project/dash_board_screen/dashboard_screen.dart';
 import 'package:snapkart_project/auth/screen/sign_up_screen.dart';
 
 class LogInScreen extends StatelessWidget {
@@ -14,7 +14,6 @@ class LogInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Future logInAccount() async {
       String email = emailController.text;
       String password = passwordController.text;
@@ -22,13 +21,15 @@ class LogInScreen extends StatelessWidget {
         AuthModel authModel = AuthModel(username: email, password: password);
         AuthProvider authProvider =
             Provider.of<AuthProvider>(context, listen: false);
-        await authProvider.logIn(authModel);
-        Navigator.pushReplacement(
+        bool success = await authProvider.logIn(authModel);
+        if (success) {
+          Navigator.pushReplacement(
             context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  HomeScreen(username: email, password: password),
-            ));
+            MaterialPageRoute(builder: (context) => DashboardScreen()),
+          );
+        } else {
+          // Stay on the login screen and display the error
+        }
       }
     }
 

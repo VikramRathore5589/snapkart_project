@@ -8,11 +8,11 @@ class AuthService {
   Future<bool> signUp(AuthModel authModel) async {
     String url = ApiUrl.signUpUrl;
     final encode = jsonEncode(authModel.toJson());
-    print(encode);
+    // print(encode);
     Response response = await http.post(Uri.parse(url),
         body: encode, headers: {'Content-Type': 'application/json'});
     if (response.statusCode == 201) {
-      print('Sign up successful: ${response.body}');
+      // print('Sign up successful: ${response.body}');
       return true;
     } else {
       throw Exception('Something went wrong');
@@ -24,10 +24,10 @@ class AuthService {
     final encode = jsonEncode(authModel.toJson());
     Response response = await http.post(Uri.parse(url),
         body: encode, headers: {'Content-Type': 'application/json'});
-    print('Response status: ${response.statusCode}');
-    print('Response body: ${response.body}');
+    // print('Response status: ${response.statusCode}');
+    // print('Response body: ${response.body}');
     if (response.statusCode == 200) {
-      print('Sign up successful: ${response.body}');
+      // print('Sign up successful: ${response.body}');
       String data = response.body;
       final map = jsonDecode(data);
       String token = map['token'];

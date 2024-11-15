@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:snapkart_project/auth/model/auth_model.dart';
 import 'package:snapkart_project/auth/provider/auth_provider.dart';
-import 'package:snapkart_project/auth/screen/home_screen.dart';
+import 'package:snapkart_project/dash_board_screen/dashboard_screen.dart';
 import 'package:snapkart_project/auth/screen/log_in_screen.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -15,8 +15,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String username = usernameController.text;
-    String password = passwordController.text;
 
     Future signUp() async {
       String username = usernameController.text;
@@ -94,26 +92,7 @@ class SignUpScreen extends StatelessWidget {
                       ElevatedButton(
                           onPressed: () async {
                             signUp();
-                            // bool signUpSuccess = await signUp();
-                            // if (signUpSuccess) {
-                            //   // Navigator.pushReplacement(
-                            //   //   context,
-                            //   //   MaterialPageRoute(
-                            //   //       builder: (context) =>
-                            //   //           HomeScreen(
-                            //   //               username: usernameController.text,
-                            //   //               password: passwordController.text,
-                            //   //
-                            //   //           )),
-                            //   // );
-                            // } else {
-                            //   print('Sign up failed');
-                            // }
-                            // Navigator.pushReplacement(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => HomeScreen(),
-                            //     ));
+
                           },
                           child: Text(
                             'Sign up',
