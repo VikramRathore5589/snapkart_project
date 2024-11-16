@@ -3,4 +3,5 @@ class ApiUrl{
   static const signUpUrl='$baseUrl/users/register';
   static const loginUrl='$baseUrl/users/login';
   static const fetchProductUrl='$baseUrl/products';
+  static const getCategoryUrl='$baseUrl/categories';
 }
