@@ -15,7 +15,6 @@ class SignUpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     Future signUp() async {
       String username = usernameController.text;
       String password = passwordController.text;
@@ -25,14 +24,12 @@ class SignUpScreen extends StatelessWidget {
         AuthProvider authProvider =
             Provider.of<AuthProvider>(context, listen: false);
         await authProvider.signUp(authModel);
-        Navigator.pop(context);
-        // Navigator.pushReplacement(
-        //     context,
-        //     MaterialPageRoute(
-        //       builder: (context) =>
-        //           HomeScreen(username: username,
-        //             password:password,),
-        //     ));
+        Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LogInScreen(),
+            ));
+
       }
     }
 
@@ -92,7 +89,6 @@ class SignUpScreen extends StatelessWidget {
                       ElevatedButton(
                           onPressed: () async {
                             signUp();
-
                           },
                           child: Text(
                             'Sign up',

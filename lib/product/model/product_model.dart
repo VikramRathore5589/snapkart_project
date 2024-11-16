@@ -13,7 +13,7 @@ class ProductModel {
     this.price,
     this.category,
     this.iV,
-    this.image});
+    });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -22,7 +22,7 @@ class ProductModel {
     price = json['price'];
     category = json['category'];
     iV = json['__v'];
-    image=json['image'];
+
   }
 
   Map<String, dynamic> toJson() {
@@ -33,7 +33,7 @@ class ProductModel {
     data['price'] = price;
     data['category'] = category;
     data['__v'] = iV;
-    data['image']=image;
+
     return data;
   }
 }

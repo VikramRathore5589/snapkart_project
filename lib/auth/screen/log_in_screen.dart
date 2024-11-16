@@ -109,14 +109,15 @@ class LogInScreen extends StatelessWidget {
                   children: [
                     Text(' Do you have no Account'),
                     TextButton(
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignUpScreen(),
-                              ));
-                        },
-                        child: Text('SIGN UP'))
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpScreen(),
+                            ));
+                      },
+                      child: Text('SIGN UP'),
+                    )
                   ],
                 )
               ],

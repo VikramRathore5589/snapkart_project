@@ -11,14 +11,16 @@ class ProductService {
     Response response = await http.get(Uri.parse(url),
         headers: {'x-api-key': 'aihfj--qwnkqwr--jlkqwnjqw--jnkqwjnqwy'});
     if (response.statusCode == 200) {
-      final result = jsonDecode(response.body);
-      List<ProductModel> productList = [];
-      for (int item = 0; item < result.length; item++) {
-        final map = result[item];
-        ProductModel productModel = ProductModel.fromJson(map);
-        productList.add(productModel);
-      }
-      return productList;
+      List<dynamic> result = jsonDecode(response.body);
+      final finalResult=result.map((e)=> ProductModel.fromJson(e)).toList();
+      return finalResult;
+      // List<ProductModel> productList = [];
+      // for (int item = 0; item < result.length; item++) {
+      //   final map = result[item];
+      //   ProductModel productModel = ProductModel.fromJson(map);
+      //   productList.add(productModel);
+      // }
+
     } else {
       throw 'Unable to fetch product';
     }
