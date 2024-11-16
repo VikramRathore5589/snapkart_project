@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:snapkart_project/core/app_util.dart';
 import 'package:snapkart_project/product/model/product_model.dart';
 
 class ProductDetailScreen extends StatelessWidget {
@@ -9,9 +10,7 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name ?? 'Product Details'),
-      ),
+      appBar: Util.appBar('Product Detail'),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -21,11 +20,12 @@ class ProductDetailScreen extends StatelessWidget {
             children: [
               Text(
                 product.name ?? 'No Name',
-                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 16),
               Text(
-                "Price: Rs. ${product.price?.toString() ?? 'N/A'}",
+                "Price: Rs. ${product.price?.toString() ?? 'No price'}",
                 style: const TextStyle(fontSize: 18, color: Colors.green),
               ),
               const SizedBox(height: 16),
@@ -40,7 +40,7 @@ class ProductDetailScreen extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                "Version: ${product.iV?.toString() ?? 'N/A'}",
+                "Version: ${product.iV?.toString() ?? 'No IV'}",
                 style: const TextStyle(fontSize: 14, color: Colors.grey),
               ),
             ],
