@@ -10,39 +10,46 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProductProvider productProvider = Provider.of<ProductProvider>(context);
+    ProductProvider productProvider = Provider.of<ProductProvider>(context,listen: false);
     productProvider.fetchProduct();
 
     return Scaffold(
       appBar: Util.appBar('Products'),
       body: Consumer<ProductProvider>(
         builder: (context, provider, child) {
-          return ListView.builder(
-            itemCount: provider.productList.length,
-            itemBuilder: (context, index) {
-              ProductModel product = provider.productList[index];
-              return GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          ProductDetailScreen(product: product),
+          if (provider.productList.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          } else {
+            return ListView.builder(
+              itemCount: provider.productList.length,
+              itemBuilder: (context, index) {
+                ProductModel product = provider.productList[index];
+                return GestureDetector(
+                  // onLongPress: () {
+                  //   provider.deleteProduct(product.sId);
+                  // },
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            ProductDetailScreen(product: product),
+                      ),
+                    );
+                  },
+                  child: Card(
+                    elevation: 1,
+                    child: ListTile(
+                      title: Text(product.name ?? 'No product name'),
+                      subtitle: Text(" Rs.${product.price.toString()}"),
+                      trailing: Text(product.description ?? 'No category'),
+                      leading: Text(product.iV.toString()),
                     ),
-                  );
-                },
-                child: Card(
-                  elevation: 1,
-                  child: ListTile(
-                    title: Text(product.name ?? 'No product name'),
-                    subtitle: Text(" Rs.${product.price.toString()}"),
-                    trailing: Text(product.description ?? 'No category'),
-                    leading: Text(product.iV.toString()),
                   ),
-                ),
-              );
-            },
-          );
+                );
+              },
+            );
+          }
         },
       ),
     );

@@ -5,7 +5,7 @@ class ProductModel {
   int? price;
   String? category;
   int? iV;
-  String? image;
+
 
   ProductModel({this.sId,
     this.name,
