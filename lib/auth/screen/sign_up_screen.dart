@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:snapkart_project/auth/model/auth_model.dart';
 import 'package:snapkart_project/auth/provider/auth_provider.dart';
+import 'package:snapkart_project/core/ui_helper/ui_helper.dart';
 import 'package:snapkart_project/dash_board_screen/dashboard_screen.dart';
 import 'package:snapkart_project/auth/screen/log_in_screen.dart';
 
@@ -29,7 +30,6 @@ class SignUpScreen extends StatelessWidget {
             MaterialPageRoute(
               builder: (context) => LogInScreen(),
             ));
-
       }
     }
 
@@ -67,15 +67,19 @@ class SignUpScreen extends StatelessWidget {
                       SizedBox(
                         height: 16,
                       ),
-                      buildTextField('Enter Username', TextInputType.text,
-                          usernameController),
+                      UiHelper.customTextField(
+                          inputType: TextInputType.text,
+                          controller: usernameController,
+                          hintText: 'Enter Username',
+                          borderRadius: BorderRadius.circular(10)),
                       SizedBox(
                         height: 16,
                       ),
-                      buildTextField(
-                          'Enter password',
-                          TextInputType.numberWithOptions(),
-                          passwordController),
+                      UiHelper.customTextField(
+                          inputType: TextInputType.numberWithOptions(),
+                          controller: passwordController,
+                          hintText: 'Enter Password',
+                          borderRadius: BorderRadius.circular(10)),
                       SizedBox(
                         height: 16,
                       ),
@@ -140,23 +144,23 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  TextFormField buildTextField(
-      String hintText, TextInputType type, TextEditingController controller) {
-    return TextFormField(
-      validator: (
-        String? value,
-      ) {
-        if (value == null || value.isEmpty) {
-          return 'This field is required';
-        }
-      },
-      controller: controller,
-      keyboardType: type,
-      decoration: InputDecoration(
-          hintText: hintText,
-          filled: true,
-          fillColor: Colors.white.withOpacity(0.8),
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
-    );
-  }
+// TextFormField buildTextField(
+//     String hintText, TextInputType type, TextEditingController controller) {
+//   return TextFormField(
+//     validator: (
+//       String? value,
+//     ) {
+//       if (value == null || value.isEmpty) {
+//         return 'This field is required';
+//       }
+//     },
+//     controller: controller,
+//     keyboardType: type,
+//     decoration: InputDecoration(
+//         hintText: hintText,
+//         filled: true,
+//         fillColor: Colors.white.withOpacity(0.8),
+//         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10))),
+//   );
+// }
 }
