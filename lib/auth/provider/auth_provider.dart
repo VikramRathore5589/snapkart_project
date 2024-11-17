@@ -41,19 +41,5 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
-  // Future <bool>logIn(AuthModel authModel) async {
-  //   try {
-  //     String? token = await authService.logIn(authModel);
-  //     await StorageHelper.saveToken(token);
-  //     print('Token: $token');
-  //     if(token.isNotEmpty){
-  //       Util.flutterToast('Account logged in successfully');
-  //       return true;
-  //     }
-  //     notifyListeners();
-  //   } catch (e) {
-  //     Util.flutterToast(e.toString());
-  //     return false;
-  //   }
-  // }
+
 }
