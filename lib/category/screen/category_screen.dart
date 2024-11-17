@@ -4,7 +4,6 @@ import 'package:snapkart_project/category/model/category_model.dart';
 import 'package:snapkart_project/category/provider/category_provider.dart';
 import 'package:snapkart_project/category/screen/category_detail_screen.dart';
 import 'package:snapkart_project/core/app_util.dart';
-import 'package:snapkart_project/product/provider/product_provider.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -16,6 +15,9 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: Util.appBar('Categories'),
       body: Consumer<CategoryProvider>(builder: (context, provider, child) {
+        if(provider.categoryList.isEmpty){
+          return const Center(child: CircularProgressIndicator());
+        }else{
         return ListView.builder(
           itemBuilder: (context, index) {
             CategoryModel items = provider.categoryList[index];
@@ -38,7 +40,7 @@ class CategoryScreen extends StatelessWidget {
             );
           },
           itemCount: provider.categoryList.length,
-        );
+        );}
       }),
     );
   }
