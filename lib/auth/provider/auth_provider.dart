@@ -6,6 +6,7 @@ import 'package:snapkart_project/core/storage_helper/storage_helper_class.dart';
 
 class AuthProvider extends ChangeNotifier {
   AuthService authService;
+
   // bool isAuthenticated=true;
 
   AuthProvider(this.authService);
@@ -15,13 +16,14 @@ class AuthProvider extends ChangeNotifier {
       bool success = await authService.signUp(authModel);
       notifyListeners();
       if (success) {
-         Util.flutterToast('Account Created successfully');
+        Util.flutterToast('Account Created successfully');
       }
     } catch (e) {
       // return false;
       Util.flutterToast(e.toString());
     }
   }
+
   Future<bool> logIn(AuthModel authModel) async {
     try {
       String? token = await authService.logIn(authModel);
@@ -41,5 +43,14 @@ class AuthProvider extends ChangeNotifier {
     }
   }
 
+  Future logOut() async {
+    try {
+      await StorageHelper.clearToken();
 
+      // Util.flutterToast('Log out successfully');
+      notifyListeners();
+    } catch (e) {
+      Util.flutterToast(e.toString());
+    }
+  }
 }

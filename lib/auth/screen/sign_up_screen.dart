@@ -20,7 +20,7 @@ class SignUpScreen extends StatelessWidget {
       String username = usernameController.text;
       String password = passwordController.text;
       if (formKey.currentState!.validate()) {
-        AuthModel authModel = AuthModel(username: username, password: password);
+        AuthModel authModel = AuthModel(email: username, password: password);
 
         AuthProvider authProvider =
             Provider.of<AuthProvider>(context, listen: false);
@@ -71,7 +71,7 @@ class SignUpScreen extends StatelessWidget {
                           inputType: TextInputType.text,
                           controller: usernameController,
                           hintText: 'Enter Username',
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(10), validator: (value) {  }),
                       SizedBox(
                         height: 16,
                       ),
@@ -79,7 +79,7 @@ class SignUpScreen extends StatelessWidget {
                           inputType: TextInputType.numberWithOptions(),
                           controller: passwordController,
                           hintText: 'Enter Password',
-                          borderRadius: BorderRadius.circular(10)),
+                          borderRadius: BorderRadius.circular(10), validator: (value) {  }),
                       SizedBox(
                         height: 16,
                       ),

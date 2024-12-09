@@ -38,7 +38,7 @@ class Util {
         IconButton(
           icon: const Icon(Icons.search, color: Colors.white),
           onPressed: () {
-            print("Search icon pressed");
+
           },
         ),
       ],

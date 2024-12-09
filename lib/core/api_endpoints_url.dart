@@ -5,4 +5,15 @@ class ApiUrl{
   static const fetchProductUrl='$baseUrl/products';
   static const getCategoryUrl='$baseUrl/categories';
   static const deleteProductUrl='$baseUrl/products/';
+  static const addToCartUrl='$baseUrl/cart';
+  static const fetchCartItemsUrl='$baseUrl/cart';
+  static const updateCartUrl='$baseUrl/cart';
+  static const deleteCartItemUrl='$baseUrl/cart/';
+  static const placeOrderUrl='$baseUrl/orders';
+  static const clearCartUrl='$baseUrl/cart';
+  static const fetchOrders='$baseUrl/orders';
+  static  updateOrderStatusUrl(String orderNumber){
+    return '$baseUrl/orders/$orderNumber';
+  }
+
 }

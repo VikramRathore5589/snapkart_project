@@ -19,15 +19,15 @@ class LogInScreen extends StatelessWidget {
       String email = emailController.text;
       String password = passwordController.text;
       if (formKey.currentState!.validate()) {
-        AuthModel authModel = AuthModel(username: email, password: password);
+        AuthModel authModel = AuthModel(email: email, password: password);
         AuthProvider authProvider =
         Provider.of<AuthProvider>(context, listen: false);
         bool success = await authProvider.logIn(authModel);
-        if (success) {
+        if (success) {if(context.mounted){
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => DashboardScreen()),
-          );
+          );}
         } else {
           // Not do any movement and stay on current screen
         }
@@ -69,12 +69,12 @@ class LogInScreen extends StatelessWidget {
                       height: 40,
                     ),
                     UiHelper.customTextField(
-                        controller: emailController, hintText: 'Enter Email'),
+                        controller: emailController, hintText: 'Enter Email', validator: (value) {  }),
                     SizedBox(
                       height: 16,
                     ),
                     UiHelper.customTextField(controller: passwordController,
-                        hintText: 'Enter Password'),
+                        hintText: 'Enter Password', validator: (value) {  }),
                     SizedBox(
                       height: 8,
                     ),
