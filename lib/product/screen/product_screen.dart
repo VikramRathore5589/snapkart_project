@@ -40,10 +40,11 @@ class ProductScreen extends StatelessWidget {
                   child: Card(
                     elevation: 1,
                     child: ListTile(
+                      leading: CircleAvatar(radius: 20,child: Text(product.stock.toString()),),
                       title: Text(product.name ?? 'No product name'),
                       subtitle: Text(" Rs.${product.price.toString()}"),
-                      trailing: Text(product.description ?? 'No category'),
-                      leading: Text(product.iV.toString()),
+                      trailing: Text(product.discountAmount.toString(),style: TextStyle(fontSize: 15),),
+
                     ),
                   ),
                 );
