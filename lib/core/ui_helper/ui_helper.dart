@@ -5,7 +5,7 @@ class UiHelper {
       {required TextEditingController controller,
       required String hintText,
       BorderRadius? borderRadius,
-      TextInputType? inputType}) {
+      TextInputType? inputType, required Null Function(dynamic value) validator}) {
     return TextFormField(
       keyboardType: inputType,
       controller: controller,
