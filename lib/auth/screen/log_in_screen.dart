@@ -23,7 +23,8 @@ class LogInScreen extends StatelessWidget {
         AuthProvider authProvider =
         Provider.of<AuthProvider>(context, listen: false);
         bool success = await authProvider.logIn(authModel);
-        if (success) {if(context.mounted){
+        if (success) {
+          if(context.mounted){
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => DashboardScreen()),
