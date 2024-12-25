@@ -28,7 +28,7 @@ class AuthProvider extends ChangeNotifier {
     try {
       String? token = await authService.logIn(authModel);
 
-      if (token != null && token.isNotEmpty) {
+      if (token.isNotEmpty) {
         await StorageHelper.saveToken(token);
         notifyListeners();
         Util.flutterToast('Logged in successfully.');
