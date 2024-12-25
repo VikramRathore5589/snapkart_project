@@ -17,7 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   List<Widget> screens = [
     ProductScreen(),
     CategoryScreen(),
-    CartScreen(),
+     CartScreen(),
     ProfileScreen()
   ];
 
